@@ -1,51 +1,33 @@
 <template>
   <div class="container-fluid" :class="containerClasses">
     <div class="row" :class="topRowClasses">
-      <div :class="middleColumnClasses">
-        <slot name="middleCol">
-          <h1>Mittlere Spalte</h1>
-        </slot>
-      </div>
+      <slot name="topRow">
+        <h1>Obere Reihe</h1>
+      </slot>
     </div>
     <div class="row" :class="bottumRowClasses">
-      <div :class="leftColumnClasses">
-        <slot name="leftCol">
-          <h1>Linke Spalte</h1>
-        </slot>
-      </div>
-      <div :class="rightColumnClasses">
-        <slot name="rightCol">
-          <h1>Rechte Spalte</h1>
-        </slot>
-      </div>
+      <slot name="bottumRow">
+        <h1>Untere Reihe</h1>
+      </slot>
     </div>
   </div>
 </template>
 
 <script>
 export default {
-  name: "TheTwoColumnsLayout",
+  name: "TheTwoRowLayout",
   props: {
     containerClass: {
       type: String,
+      default: "text-center bg-vue",
     },
     topRowClass: {
       type: String,
+      default: "align-items-center justify-content-center",
     },
     bottumRowClass: {
       type: String,
-    },
-    middleColumnClass: {
-      type: String,
-      default: "offset-1 col-10",
-    },
-    leftColumnClass: {
-      type: String,
-      default: "col-10 col-sm-5",
-    },
-    rightColumnClass: {
-      type: String,
-      default: "col-10 col-sm-5",
+      default: "align-items-center justify-content-center",
     },
     fullsize: {
       type: Boolean,
@@ -61,15 +43,6 @@ export default {
     },
     bottumRowClasses() {
       return [this.bottumRowClass, this.fullsize ? "hb" : ""];
-    },
-    middleColumnClasses() {
-      return this.middleColumnClass;
-    },
-    leftColumnClasses() {
-      return this.leftColumnClass;
-    },
-    rightColumnClasses() {
-      return this.rightColumnClass;
     },
   },
 };

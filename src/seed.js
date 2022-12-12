@@ -1,4 +1,4 @@
-export const quizData = [
+export const questionData = [
   {
     id: 1,
     question: "Wie heißt der Raum im Flugzeug, in dem der Pilot sitzt?",
