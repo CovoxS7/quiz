@@ -5,21 +5,22 @@ const state = reactive({
   questionData,
   nickname: "",
   usedQuestions: [],
+  selectedAnswer: "",
+  isAnswerTrue: true,
 });
 
 const getters = {
   getQuestion: () => {
-    const randomNumber = Math.floor(
+    const questionNumber = Math.floor(
       Math.random() * state.questionData.length + 1
     );
-    console.log(randomNumber);
-    if (state.usedQuestions.includes(randomNumber)) {
+    if (state.usedQuestions.includes(questionNumber)) {
       getters.getQuestion();
     } else {
       const question = state.questionData.find(
-        (element) => element.id === randomNumber
+        (element) => element.id === questionNumber
       );
-      mutations.setUsedQuestion(randomNumber);
+      mutations.setUsedQuestion(questionNumber);
       return question;
     }
   },
@@ -29,9 +30,17 @@ const getters = {
 };
 
 const mutations = {
+  setUserName: (name) => {
+    state.nickname = name;
+  },
   setUsedQuestion: (id) => {
     state.usedQuestions.push(id);
-    console.log(state.usedQuestions);
+  },
+  setSelectedAnswer: (index) => {
+    state.selectedAnswer = index;
+  },
+  setIsAnswerTrue: (boolean) => {
+    state.isAnswerTrue = boolean;
   },
 };
 

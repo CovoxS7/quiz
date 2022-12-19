@@ -11,7 +11,7 @@
         v-model="name"
       />
       <div class="d-grid mt-2">
-        <button class="btn bg-vue2">Start</button>
+        <button class="btn btn-primary">Start</button>
       </div>
     </form>
   </div>
@@ -23,14 +23,14 @@ export default {
   name: "StartComponent",
   data() {
     return {
-      name: Store.state.nickname,
+      name: "",
     };
   },
   methods: {
     startQuiz(e) {
       e.preventDefault();
-      console.log(`Hallo ${this.name}`);
-      this.$router.push({ path: "/question" });
+      Store.mutations.setUserName(this.name);
+      this.$router.push({ path: "/points" });
     },
   },
 };

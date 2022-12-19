@@ -14,13 +14,21 @@ export default {
 @import "~animate.css/animate.min.css";
 
 .bg-vue {
+  background-color: rgb(39, 44, 116);
+  color: white;
+}
+.bg-vue2 {
+  background-color: rgb(40, 133, 255);
+  color: white;
+}
+/* .bg-vue {
   background-color: rgb(52, 73, 94);
   color: white;
 }
 .bg-vue2 {
   background-color: rgb(65, 184, 131);
   color: white;
-}
+} */
 .text-vue {
   color: rgb(52, 73, 94);
 }

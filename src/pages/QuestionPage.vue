@@ -1,7 +1,8 @@
 <template>
   <TheTwoRowLayout
     :fullsize="true"
-    :bottumRowClass="'g-2 g-lg-3 align-content-center justify-content-center'"
+    :topRowClass="'h-50 align-items-center justify-content-center'"
+    :bottumRowClass="'h-50 g-2 g-lg-3 align-content-center justify-content-center'"
   >
     <template #topRow>
       <div class="col-10 col-lg-4">
@@ -14,12 +15,15 @@
     </template>
     <template #bottumRow>
       <div
-        class="col-10 col-lg-5 d-grid"
-        v-for="awnser in question.possibleAnswers"
-        :key="awnser"
+        class="col-10 col-lg-5"
+        v-for="(answer, index) in question.possibleAnswers"
+        :key="index"
       >
-        <input type="radio" class="btn-check" name="options" :id="awnser.id" />
-        <label class="btn btn-secondary" :for="awnser.id">{{ awnser }}</label>
+        <AnswerComponent
+          :answer="answer"
+          :index="index"
+          :correctAnswer="question.correctAnswer"
+        ></AnswerComponent>
       </div>
     </template>
   </TheTwoRowLayout>
@@ -27,12 +31,14 @@
 
 <script>
 import TheTwoRowLayout from "@/layouts/TheTwoRowLayout.vue";
+import AnswerComponent from "@/components/AnswerComponent.vue";
 import Store from "../store";
 
 export default {
   name: "QuestionPage",
   components: {
     TheTwoRowLayout,
+    AnswerComponent,
   },
   computed: {
     questionNumber() {
